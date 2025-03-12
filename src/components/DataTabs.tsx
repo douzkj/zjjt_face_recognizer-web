@@ -344,6 +344,7 @@ export default () => {
         onChange={(key) => {
           if (key === '1') loadCollectionData();
           if (key === '2') loadVisitorData();
+          if (key === '3') loadEnhanceImages();
         }}
       />
       <VisitorModal 
