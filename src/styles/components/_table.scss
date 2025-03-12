@@ -1,0 +1,144 @@
+@use '../utils/variables' as var;
+
+.data-board {
+  // 全局表格容器
+  .ant-table {
+    background: rgba(5, 25, 55, 0.9);
+    border: 1px solid rgba(var.$primary-color, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+
+    // 表头
+    .ant-table-thead > tr > th {
+      background: rgba(var.$primary-color, 0.1) !important;
+      color: var.$primary-color;
+      border-bottom: 1px solid rgba(var.$primary-color, 0.3) !important;
+      font-weight: 500;
+    }
+
+    // 表格内容
+    .ant-table-tbody {
+      td {
+        color: rgba(255, 255, 255, 0.85);
+        border-bottom: 1px solid rgba(var.$primary-color, 0.1) !important;
+      }
+
+      // 行悬停效果
+      tr:hover:not(.ant-table-expanded-row) > td {
+        background: rgba(var.$primary-color, 0.05) !important;
+      }
+    }
+
+    // 分页器
+    .ant-pagination {
+      &-item {
+        background: transparent;
+        border-color: rgba(var.$primary-color, 0.3);
+        a {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        &-active {
+          border-color: var.$primary-color;
+          a {
+            color: var.$primary-color;
+          }
+        }
+      }
+
+      &-prev,
+      &-next {
+        .ant-pagination-item-link {
+          background: transparent;
+          border-color: rgba(var.$primary-color, 0.3);
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+
+        // 行点击效果
+    .ant-table-row {
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:active {
+        transform: scale(0.98);
+        }
+    }
+
+    // 当前排序表头
+    .ant-table-column-sort {
+        background: rgba(var.$primary-color, 0.15) !important;
+       
+    }
+
+    // 分页器悬停
+    .ant-pagination-item:hover,
+    .ant-pagination-prev:hover .ant-pagination-item-link,
+    .ant-pagination-next:hover .ant-pagination-item-link {
+        border-color: var.$primary-color;
+    }
+  }
+
+  // 状态标签
+  .ant-tag {
+    background: transparent !important;
+    border: 1px solid;
+
+    &-green {
+      color: #00ff88;
+      border-color: rgba(0, 255, 136, 0.3);
+    }
+
+    &-volcano {
+      color: #ff4d4f;
+      border-color: rgba(255, 77, 79, 0.3);
+    }
+  }
+
+  // 头像样式
+  .ant-avatar {
+    background: rgba(var.$primary-color, 0.1);
+    border: 1px solid rgba(var.$primary-color, 0.3);
+    
+    .avatar-fallback {
+      color: var.$primary-color;
+    }
+  }
+
+  // 错误提示
+  .error-tip {
+    background: rgba(255, 77, 79, 0.1);
+    border: 1px solid rgba(255, 77, 79, 0.3);
+    color: #ff4d4f;
+  }
+}
+
+
+// src/styles/components/_table.scss
+.avatar-cell {
+    padding: 8px 0;
+    
+    .table-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 4px;
+      background: rgba(var.$primary-color, 0.1);
+      border: 1px solid rgba(var.$primary-color, 0.3);
+      transition: transform 0.3s;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+  
+      .avatar-fallback {
+        color: var.$primary-color;
+        font-size: 14px;
+      }
+  
+      // 图片自适应
+      .ant-avatar-image {
+        object-fit: cover;
+      }
+    }
+  }

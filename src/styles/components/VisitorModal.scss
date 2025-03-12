@@ -1,0 +1,77 @@
+/* CSS样式 */
+.visitor-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 设置为每行5列 */
+  gap: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+  width: 100%; /* 确保占满容器宽度 */
+}
+
+/* 添加媒体查询以适应不同屏幕尺寸 */
+@media (max-width: 768px) {
+  .visitor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 在小屏幕上恢复自动填充 */
+  }
+}
+
+.visitor-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.visitor-item:hover {
+  box-shadow: 0 2px 8px rgba(53, 176, 201, 0.3);
+}
+
+.ant-checkbox-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.ant-checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+}
+
+.visitor-content {
+  position: relative;
+  padding-top: 100%; /* 保持正方形比例 */
+}
+
+// .visitor-image {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%; /* 修正图片宽度 */
+//   height: 100%;
+//   object-fit: cover;
+//   border-radius: 6px;
+// }
+
+.visitor-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%; /* 进一步缩小图片宽度 */
+  height: 70%; /* 进一步缩小图片高度 */
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.visit-count {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 4px;
+  text-align: center;
+  font-size: 12px;
+}

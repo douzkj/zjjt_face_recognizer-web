@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能访客监控大屏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 大屏容器 */
+        .dashboard {
+            background: #041247;
+            height: 100vh;
+            padding: 20px;
+            color: #fff;
+            position: relative;
+        }
+
+        /* 头部区域 */
+        .header {
+            display: flex;
+            justify-content: center;
+            /* 从 space-between 改为 center */
+            position: relative;
+            /* 新增相对定位 */
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #35B0C9;
+            margin: 0 auto;
+            /* 新增自动边距居中 */
+        }
+
+        .time-box {
+            position: absolute;
+            /* 新增绝对定位 */
+            right: 20px;
+            /* 保持右侧位置 */
+            font-size: 1.2em;
+            background: rgba(5, 34, 110, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* 核心展示区 */
+        .display-area {
+            background: rgba(4, 18, 71, 0.8);
+            border: 2px solid #35B0C9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25vh;
+        }
+
+        .photo-wall {
+            height: 50vh;
+            /* 从 65vh 改为 50vh */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 调整主体内容区域高度 */
+        .main-content {
+            height: calc(100vh - 100px);
+            /* 原为 100vh - 120px */
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .photo-item {
+            min-width: 33.33%;
+            height: 100%;
+            position: relative;
+        }
+
+        .visitor-photo {
+            width: 90%;
+            height: 90%;
+            margin: 5%;
+            border: 2px solid #35B0C9;
+            border-radius: 8px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .visitor-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .visit-count {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 12px;
+            border-radius: 5px;
+        }
+        .count {
+        color: #ff0000;
+        font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1 class="title">智能访客监控系统</h1>
+            <div class="time-box">
+                <span id="current-time">2025-02-25 15:30:00</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="display-area">
+                <h2>访客照片墙</h2>
+                <div class="photo-wall">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- 初始示例图片 -->
+                        <div class="photo-item">
+                            <img src="visitor_1.jpg" class="visitor-photo" alt="访客1">
+                            <div class="visit-count">访问 5 次</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 实时时间更新
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent =
+                now.toLocaleString('zh-CN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+        }
+        setInterval(updateTime, 1000);
+
+        // 轮播控制逻辑
+        let currentIndex = 0;
+        function slideCarousel() {
+            const track = document.getElementById('carouselTrack');
+            currentIndex = (currentIndex + 1) % 20;
+            track.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+        }
+        setInterval(slideCarousel, 3000);
+
+        // 修改初始化函数生成20张照片
+        function initPhotos() {
+            const track = document.getElementById('carouselTrack');
+            // 在initPhotos函数中修改模板字符串
+            const photos = Array(20).fill().map((_, i) => `
+                <div class="photo-item">
+                    <img src="http://localhost:8080/visitor-images/visitor_face/visitor_visitor_1741345994695/visitor_visitor_1741345994695.jpg" 
+                        class="visitor-photo" 
+                        alt="访客${i+1}">
+                    <div class="visit-count">访问 <span class="count">${Math.floor(Math.random()*100)+1}</span> 次</div>
+                </div>
+            `);
+            track.innerHTML = photos.join('');
+        }
+        initPhotos();
+    </script>
+</body>
+
+</html>

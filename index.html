@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智能访客监控系统</title>
+  </head>
+  <body>
+
+
+        
+    <!-- 添加动态背景 -->
+    <canvas id="bg-canvas"></canvas>
+    <!-- 将脚本单独存放 -->
+    <script type="module" src="./src/main.tsx"></script>
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智能监控大屏</title>
+    <style>
+      #bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        pointer-events: none; /* 防止遮挡点击事件 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <canvas id="bg-canvas"></canvas>
+    <script type="module" src="/src/scripts/background.js"></script>
+  </body>
+</html>
+
+
+<!-- 添加动态背景 -->
+<canvas id="bg-canvas" style="position: fixed; top:0; left:0; z-index: -1;"></canvas>
+
+<script>
+  // 添加动态粒子背景
+  window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    function draw() {
+      ctx.fillStyle = 'rgba(3, 10, 31, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // 添加粒子动画逻辑...
+      requestAnimationFrame(draw);
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  });
+</script>

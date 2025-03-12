@@ -1,0 +1,60 @@
+@use './utils/variables' as var;
+@use './components/panel';
+@use './components/video';
+@use './components/tabs';
+@use './components/control';
+@use './components/table';
+
+
+body {
+  background: 
+    linear-gradient(0deg, transparent 24px, var.$grid-color 25px),
+    linear-gradient(90deg, transparent 24px, var.$grid-color 25px),
+    var.$bg-color;
+  background-size: 25px 25px;
+    color: #fff;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+#root {
+  max-width: 2560px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+
+// 响应式适配
+@media (max-width: 768px) {
+  .video-wrapper {
+    aspect-ratio: 16/9;
+  }
+
+  .control-bar {
+    flex-direction: column !important;
+    width: 100%;
+
+    .ant-btn, .ant-input-number-group {
+      width: 100%;
+    }
+  }
+}
+
+// 视频控制区
+.video-controls {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+// 访客计数器
+.visitor-counter {
+  background: #f0f2f5;
+  border-radius: 4px;
+  padding: 0 12px;
+  cursor: default;
+
+  &:hover {
+    background: #d8b30e;
+  }
+}

@@ -1,0 +1,99 @@
+@use '../utils/variables' as var;
+
+.control-bar {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 30, 60, 0.8);
+    border-radius: 8px;
+  
+    // 主控制按钮
+    .control-btn {
+      &.ant-btn-primary {
+        background: var.$primary-color;
+        border-color: var.$primary-color;
+        
+        &:hover {
+          background: lighten(var.$primary-color, 10%);
+          border-color: lighten(var.$primary-color, 10%);
+        }
+      }
+  
+      // 停止状态
+      &.ant-btn-default {
+        color: var.$primary-color;
+        border-color: var.$primary-color;
+        
+        &:hover {
+          color: lighten(var.$primary-color, 10%);
+          border-color: lighten(var.$primary-color, 10%);
+        }
+      }
+  
+      .anticon {
+        font-size: 16px;
+      }
+    }
+  
+    // 访客计数器
+    .visitor-btn {
+      background: rgba(var.$primary-color, 0.1);
+      border-color: rgba(var.$primary-color, 0.3);
+      color: var.$primary-color;
+      
+      &:hover {
+        background: rgba(var.$primary-color, 0.2);
+        border-color: var.$primary-color;
+      }
+    }
+  
+    // 输入框
+    .frequency-input {
+        // 输入框主体
+        .ant-input-number {
+          background: rgba(var.$primary-color, 0.1);
+          border-color: rgba(var.$primary-color, 0.3) !important;
+          color: var.$primary-color;
+          width: 160px; // 固定宽度
+      
+          &:hover,
+          &:focus-within {
+            border-color: var.$primary-color !important;
+            box-shadow: 0 0 0 2px rgba(var.$primary-color, 0.2);
+          }
+      
+          // 输入文字颜色
+          input {
+            color: var.$primary-color;
+            &::placeholder {
+              color: rgba(var.$primary-color, 0.6);
+            }
+          }
+        }
+      
+        // 前后附加内容
+        .ant-input-number-group-addon {
+          background: rgba(var.$primary-color, 0.2);
+          border-color: rgba(var.$primary-color, 0.3);
+          color: var.$primary-color;
+      
+          // 前后缀分隔线
+          &:first-child {
+            border-right: 1px solid rgba(var.$primary-color, 0.3);
+          }
+          &:last-child {
+            border-left: 1px solid rgba(var.$primary-color, 0.3);
+          }
+        }
+      
+        // 调整数字调节按钮
+        .ant-input-number-handler {
+          &-up-inner,
+          &-down-inner {
+            color: var.$primary-color;
+            &:hover {
+              color: lighten(var.$primary-color, 15%);
+            }
+          }
+        }
+      }
+  }
