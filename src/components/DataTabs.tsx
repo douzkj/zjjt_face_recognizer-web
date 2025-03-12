@@ -1,4 +1,4 @@
-import { Tabs, Table, Tag, Avatar, Modal, Image } from 'antd';
+import { Tabs, Table, Tag, Modal, Image } from 'antd';
 import type { TabsProps, TableColumnsType } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
