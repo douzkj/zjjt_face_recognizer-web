@@ -1,4 +1,4 @@
-import { Tabs, Table, Tag, Avatar, Modal } from 'antd';
+import { Tabs, Table, Tag, Avatar, Modal, Image } from 'antd';
 import type { TabsProps, TableColumnsType } from 'antd';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -96,13 +96,15 @@ export default () => {
       width: 100,
       render: (path) => (
         <div className="avatar-cell">
-          <Avatar 
+          <Image 
             src={`${API_BASE}/visitor-images${path}`}
-            shape="square"
             className="table-avatar"
+            preview={{
+              mask: false 
+            }}
           >
             <span className="avatar-fallback">访客</span>
-          </Avatar>
+          </Image>
         </div>
       )
     },
@@ -141,13 +143,17 @@ export default () => {
       width: 100,
       render: (path) => (
         <div className="avatar-cell">
-          <Avatar 
+          <Image 
             src={`${API_BASE}/visitor-images${path}`}
-            shape="square"
             className="table-avatar"
+            preview={{
+              // zoom: 1.5,
+              // rotate: true,
+              mask: false
+            }}
           >
             <span className="avatar-fallback">访客</span>
-          </Avatar>
+          </Image>
         </div>
       )
     },
@@ -158,13 +164,15 @@ export default () => {
       width: 100,
       render: (path) => (
         <div className="avatar-cell">
-          <Avatar 
+          <Image 
             src={`${API_BASE}/visitor-images${path}`}
-            shape="square"
             className="table-avatar"
+            preview={{
+              mask: false 
+            }}
           >
             <span className="avatar-fallback">访客</span>
-          </Avatar>
+          </Image>
         </div>
       )
     },

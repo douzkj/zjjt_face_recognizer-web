@@ -1,4 +1,4 @@
-import { Modal, Grid, Checkbox, Button, Image, Spin, message, Empty } from 'antd';
+import { Modal, Grid, Checkbox, Button, Image, Spin, message, Empty, Col, Row } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useTaskStore } from '../stores/taskStore';
@@ -140,7 +140,9 @@ export default ({ visible, onClose, taskId }: VisitorModalProps) => {
       <Spin spinning={loading}>
         <div className="visitor-grid">
           {visitors.length > 0 ? (
-            visitors.map(visitor => (
+             <Row gutter={[16, 16]}>
+            {visitors.map(visitor => (
+              <Col key={visitor.id} xs={24} sm={12} md={8} lg={6} xl={4}>
               <div key={visitor.id} className="visitor-item">
                 <Checkbox
                   checked={selectedIds.includes(visitor.id)}
@@ -164,7 +166,9 @@ export default ({ visible, onClose, taskId }: VisitorModalProps) => {
                   </div>
                 </Checkbox>
               </div>
-            ))
+              </Col>
+            ))}
+            </Row>
           ) : (
             <Empty description="暂无访客数据" />
           )}
